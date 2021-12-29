@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import Start from "./components/Start";
 import Timer from "./components/Timer";
 import Trivia from "./components/Trivia";
-import {data} from './data/Data';
+import { dataeasy } from "./data/DataEasy";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -48,7 +48,7 @@ function App() {
         <>
           <div className="main">
             {timeOut ? (
-              <h1 className="endText">You earned: {earned}</h1>
+              <h1 className="endText">{username} <br></br> You earned: {earned}</h1>
             ) : (
               <>
                 <div className="top">
@@ -61,7 +61,7 @@ function App() {
                 </div>
                 <div className="bottom">
                   <Trivia
-                    data={data}
+                    data={dataeasy}
                     questionNumber={questionNumber}
                     setQuestionNumber={setQuestionNumber}
                     setTimeOut={setTimeOut}
@@ -69,8 +69,12 @@ function App() {
                 </div>
               </>
             )}
+
           </div>
           <div className="pyramid">
+          <div className="avatar">
+              <h1>{username}</h1>
+            </div>
             <ul className="moneyList">
               {moneyPyramid.map((m) => (
                 <li

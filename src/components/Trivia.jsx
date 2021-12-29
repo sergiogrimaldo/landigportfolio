@@ -4,7 +4,7 @@ import play from "../sounds/play.mp3";
 import correct from "../sounds/correct.mp3";
 import wrong from "../sounds/wrong.mp3";
 
-export default function Trivia({
+ function Trivia({
   data,
   questionNumber,
   setQuestionNumber,
@@ -17,9 +17,9 @@ export default function Trivia({
   const [correctAnswer] = useSound(correct);
   const [wrongAnswer] = useSound(wrong);
 
- /*useEffect(() => {
+ useEffect(() => {
     letsPlay();
-  }, [letsPlay]);*/
+  }, [letsPlay]);
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
@@ -41,7 +41,7 @@ export default function Trivia({
     // }, 3000);
 
     // setTimeout(() => {
-      delay(5000, () => {
+      delay(4000, () => {
       if (a.correct) {
         correctAnswer();
         delay(1000, () => {
@@ -64,6 +64,7 @@ export default function Trivia({
     // }, 5000);
       })
   };
+  if (question?.id <= 15) {
   return (
     <div className="trivia">
       <div className="question">{question?.question}</div>
@@ -79,4 +80,9 @@ export default function Trivia({
       </div>
     </div>
   );
+} else {
+  return <div className="won">You won</div>;
 }
+}
+
+export default Trivia;

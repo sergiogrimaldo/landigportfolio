@@ -1,22 +1,33 @@
-import { useRef } from "react";
+import useSound from "use-sound";
+import { useRef, useEffect } from "react";
+//import Image from "next/image";
+function Start({ setUsername }) {
+  const play = "/startPlay.mp3";
+  const [letsPlay] = useSound(play);
+  useEffect(() => {
+    console.log("start");
+    letsPlay();
+  }, [letsPlay]);
 
-export default function Start({ setUsername }) {
+
   const inputRef = useRef();
-
-  const handleClick = () => {
-    inputRef.current.value && setUsername(inputRef.current.value);
-  };
-
+ 
   return (
     <div className="start">
+     
       <input
+        placeholder="Enter ur Name"
         className="startInput"
-        placeholder="Enter your name"
         ref={inputRef}
       />
-      <button className="startButton" onClick={handleClick}>
+      <button
+        className="startButton"
+        onClick={() => setUsername(inputRef.current.value)}
+      >
         Start
       </button>
     </div>
   );
 }
+
+export default Start;
